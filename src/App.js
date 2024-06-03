@@ -1,6 +1,7 @@
 import {React, useState, useEffect} from 'react';
 import { Select, Typography, Row, Col, Avatar, Card} from 'antd';
 // import Loader from './components/Loader';
+import './App.css';
 
 const {Text, Title} = Typography;
 // const {Option} = Select;
@@ -37,7 +38,7 @@ const News = () => {
 
     return (
         <Row gutter={[24, 24]}>
-{articles.map((news, i) =>(
+{articles?.map((news, i) =>(news.author && (
         <Col xs={24} sm={12} lg={8} key={i}>
             <Card className='news-card' hoverable >
               <a href={news?.url} target='_blank' rel='noreferrer'>
@@ -47,21 +48,19 @@ const News = () => {
                 </div>
                 <p>
                   {news.content > 100 
-                  ? `${news.content.substring(0, 100)}...`
+                  ? `${news.content?.substring(0, 100)}...`
                   : news.content
                   }
                 </p>
                 <div className="provider-container">
                   <div>
-                   
-                    <Text className='provider-name'>{news?.author}</Text>
+                    <Text className='provider-name'>{news.author}</Text>
                   </div>
-                 
                 </div>
               </a>
             </Card> 
         </Col>
-      )).slice(0, 6 )}
+      ))).slice(0, 9)}
    </Row>
     );
 };
