@@ -40,6 +40,7 @@ const News = () => {
      <>
       <Title className='news-title' level={1}>Top Headlines</Title>
         <Row gutter={[24, 24]}>
+            {/* Check if news exists */}
         {articles?.map((news, i) =>(news.author && (
         <Col xs={24} sm={12} lg={8} key={i}>
             <Card className='news-card' hoverable >
