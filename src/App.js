@@ -27,8 +27,8 @@ const App = () => {
                  All rights reserved
               </Typography.Title>
               <Space>
-                    {/* <Link to='/'>Home</Link> */}
-                    {/* <Link to='/exchanges'>Exchanges</Link> */}
+                    <Link to='/'>Home</Link> 
+                    <Link to='/'>Help</Link>
                     <Link to='/'>News</Link>
               </Space> 
         </div>

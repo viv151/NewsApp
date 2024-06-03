@@ -1,10 +1,7 @@
 import {React, useState, useEffect} from 'react';
 import { Select, Typography, Row, Col, Avatar, Card} from 'antd';
 import moment from 'moment';
- 
-
 const {Text, Title} = Typography;
-const {Option} = Select;
 const demoImage = 'https://www.bing.com/th?id=OVFT.mpzuVZnv8dwIMRfQGPbOPC&pid=News';
 
 
@@ -27,7 +24,7 @@ const News = () => {
                 }
                 const data = await response.json();
                 setArticles(data.articles);
-                console.log(data);
+                // console.log(data);
             } catch (error) {
                 setError(error.message);
             }
@@ -41,7 +38,7 @@ const News = () => {
     }
     return (
      <>
-      <Title className='news-title' level={1}>News</Title>
+      <Title className='news-title' level={1}>Top Headlines</Title>
         <Row gutter={[24, 24]}>
         {articles?.map((news, i) =>(news.author && (
         <Col xs={24} sm={12} lg={8} key={i}>
@@ -52,6 +49,7 @@ const News = () => {
                   <img style={{maxWidth: '200px', maxHeight: '100px'}} src={news.urlToImage || demoImage} alt='news'/>
                 </div>
                 <p>
+                    {/* shortens the description of news */}
                   {news.content > 100 
                   ? `${news.content?.substring(0, 100)}...`
                   : news.content
@@ -61,6 +59,7 @@ const News = () => {
                   <div>
                     <Text className='provider-name'>{news.author}</Text>
                   </div>
+                  {/* Date when the article was published */}
                    <Text>{moment(news.publishedAt).startOf('ss').fromNow()}</Text>
                 </div>
               </a>
